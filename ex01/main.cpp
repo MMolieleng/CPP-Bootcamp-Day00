@@ -6,7 +6,7 @@
 /*   By: mmoliele <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 15:37:28 by mmoliele          #+#    #+#             */
-/*   Updated: 2017/05/23 16:27:47 by mmoliele         ###   ########.fr       */
+/*   Updated: 2017/05/23 16:45:58 by mmoliele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int main() {
 
 		if (input == "ADD")
 		{
+			Contact newContact = phonebook.add_contact();
 			if (key < 8){
-				contacts[key] = phonebook.add_contact();
+				contacts[key] = newContact;;
 				key++;
 			}
 		}
@@ -56,7 +57,7 @@ int main() {
 
 			while (search_index != -1)
 			{
-				if (search_index >=0 && search_index <= key)
+				if (search_index >=0 && search_index < 8)
 				{
 					int i = search_index;
 					
@@ -73,6 +74,9 @@ int main() {
 		                <<(contacts[i].getUnderwearColor())<<"\n"
 		                <<(contacts[i].getDarkestSecret())<<"\n";
 					
+				}
+				else{
+					std::cout<<"\nINVALID input\n";
 				}		
 				std::cout<<"Enter search index between 0-7, -1 to quit SEARCH \n ---> ";
 				std::cin>>search_index;		
