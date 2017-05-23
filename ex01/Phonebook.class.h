@@ -1,34 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Phonebook.class.hpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mmoliele <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/23 01:32:49 by mmoliele          #+#    #+#             */
-/*   Updated: 2017/05/23 14:52:50 by mmoliele         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//
+// Created by Mohale MOLIELENG on 2017/05/23.
+//
 
-#ifndef PHONEBOOK_CLASS_H
-# define PHONEBOOK_CLASS_H
-# include <iostream>
-# include "Contact.class.h"
+#ifndef EX01_PHONEBOOK_H
+#define EX01_PHONEBOOK_H
 
-class	Phonebook
-{
-	public:
+#include "Contact.class.h"
+#include <iostream>
 
-		Phonebook();
-		~Phonebook();
-		
-		void	add_contact(Contact c);
-		void	search();
-		
-	private:
-		
-		int SIZE;
-//		Contact contacts[8];
-		int KEY;
+class Phonebook {
+
+public:
+    Phonebook();
+    ~Phonebook();
+
+    Contact    add_contact();
+    void    search_contact();
+private:
+    Contact contacts[8];
+    int index;
 };
-#endif
+
+
+#endif //EX01_PHONEBOOK_H
