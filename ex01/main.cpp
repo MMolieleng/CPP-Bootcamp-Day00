@@ -6,11 +6,12 @@
 /*   By: mmoliele <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 15:37:28 by mmoliele          #+#    #+#             */
-/*   Updated: 2017/05/23 16:45:58 by mmoliele         ###   ########.fr       */
+/*   Updated: 2017/05/23 18:03:49 by mmoliele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <stdlib.h>
 #include <iomanip>
 #include "Contact.class.h"
 #include "Phonebook.class.h"
@@ -52,34 +53,45 @@ int main() {
 			}
 
 			int search_index = -1;
-			std::cout<<"Enter search index to view, -1 to quit : \n ---> ";
-			std::cin>>search_index;
 
+			std::cout<<"Enter search index to view, -1 to quit : \n ---> ";
+
+			while(!(std::cin >> search_index)){
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cout << "Search Index must be between 0-7 inclisive ";
+			}
 			while (search_index != -1)
 			{
 				if (search_index >=0 && search_index < 8)
 				{
 					int i = search_index;
-					
-                	std::cout<<std::endl
+
+					std::cout<<std::endl
 						<<(contacts[i].getFirstname())<<"\n"
-		                <<(contacts[i].getLastname())<<"\n"
-		                <<(contacts[i].getNickname())<<"\n"
-	                    <<(contacts[i].getLogin())<<"\n"
-		                <<(contacts[i].getPostalAddress())<<"\n"
-		                <<(contacts[i].getEmailAddress())<<"\n"
-		                <<(contacts[i].getPhoneNumber())<<"\n"
-		                <<(contacts[i].getBirthdayDate())<<"\n"
-		                <<(contacts[i].getFavoriteMeal())<<"\n"
-		                <<(contacts[i].getUnderwearColor())<<"\n"
-		                <<(contacts[i].getDarkestSecret())<<"\n";
-					
+						<<(contacts[i].getLastname())<<"\n"
+						<<(contacts[i].getNickname())<<"\n"
+						<<(contacts[i].getLogin())<<"\n"
+						<<(contacts[i].getPostalAddress())<<"\n"
+						<<(contacts[i].getEmailAddress())<<"\n"
+						<<(contacts[i].getPhoneNumber())<<"\n"
+						<<(contacts[i].getBirthdayDate())<<"\n"
+						<<(contacts[i].getFavoriteMeal())<<"\n"
+						<<(contacts[i].getUnderwearColor())<<"\n"
+						<<(contacts[i].getDarkestSecret())<<"\n";
+
 				}
 				else{
 					std::cout<<"\nINVALID input\n";
 				}		
 				std::cout<<"Enter search index between 0-7, -1 to quit SEARCH \n ---> ";
-				std::cin>>search_index;		
+				std::cin>>search_index;
+				while (std::cin.fail())
+				{
+					std::cin.clear();
+					std::cout<<"Enter search index between 0-7, -1 to quit SEARCH \n ---> ";
+					std::cin>>search_index;
+				}		
 			}
 		}
 	}
